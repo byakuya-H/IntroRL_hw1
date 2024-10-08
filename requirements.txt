@@ -1,0 +1,8 @@
+python==3.7
+gym==0.21.0
+gym[atari, accept-rom-license]
+importlib-metadata<5
+matplotlib
+numpy
+Pillow
+pyparsing

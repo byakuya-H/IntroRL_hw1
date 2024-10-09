@@ -1,8 +1,16 @@
+from typing import Any, List
+from collections import OrderedDict
+import sys, os, io, termios, tty
+from base64 import standard_b64encode
+from functools import partial
+
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from PIL import Image
 
 
-def plot(record):
+def plot(record: dict):
     """
     plot the performance of the agent accroding to `record`
     |args|:
@@ -15,14 +23,19 @@ def plot(record):
     """
     plt.figure()
     fig, ax = plt.subplots()
-    ax.plot(record["steps"], record["mean"], color="blue", label="reward")
-    ax.fill_between(
-        record["steps"], record["min"], record["max"], color="blue", alpha=0.2
+    steps, mean, _max, _min, query = (
+        record["steps"],
+        record["mean"],
+        record["max"],
+        record["min"],
+        record["query"],
     )
+    ax.plot(steps, mean, color="blue", label="reward")
+    ax.fill_between(steps, _min, _max, color="blue", alpha=0.2)
     ax.set_xlabel("number of steps")
     ax.set_ylabel("Average score per episode")
     ax1 = ax.twinx()
-    ax1.plot(record["steps"], record["query"], color="red", label="query")
+    ax1.plot(steps, query, color="red", label="query")
     ax1.set_ylabel("queries")
     reward_patch = mpatches.Patch(lw=1, linestyle="-", color="blue", label="score")
     query_patch = mpatches.Patch(lw=1, linestyle="-", color="red", label="query")
@@ -30,3 +43,95 @@ def plot(record):
     ax.legend(handles=patch_set)
     fig.savefig("performance.png")
     fig.show()
+
+
+class table(OrderedDict):
+    def __getattr__(self, attr) -> Any:
+        return self.get(attr, None)
+
+    def __setattr__(self, attr: str, value) -> None:
+        self[attr] = value
+
+
+class _Drawer_kitty:
+    clear_screen = b"\x1b_Ga=d\x1b\\"
+
+    def draw(self, obs: np.ndarray):
+        self._w(self.clear_screen)
+        buf = io.BytesIO()
+        plt.imsave(buf, obs, format="png")
+        data = standard_b64encode(buf.getvalue())
+        im = b""
+        while data:
+            chunk, data = data[:4096], data[4096:]
+            m = 1 if data else 0
+            im = b"\x1b_G"
+            im += (f"m={m}" + ",a=T,f=100,c=50,C=1,X=50,Y=50").encode("ascii")
+            im += b";" + chunk if chunk else b""
+            im += b"\x1b\\"
+        self._w(im)
+
+    def _w(self, im):
+        sys.stdout.buffer.write(im)
+        sys.stdout.flush()
+
+    def __del__(self):
+        self._w(self.clear_screen)
+
+
+class _Drawer_plt:
+    def __init__(self):
+        plt.ion()
+        plt.show(block=False)
+
+    def draw(self, obs: np.ndarray):
+        plt.imshow(obs)
+        plt.draw()
+
+    def __del__(self):
+        plt.clf()
+        plt.cla()
+
+def _getkey():
+    """
+    ref: https://stackoverflow.com/posts/72825322/revisions
+    """
+    fd = sys.stdin.fileno()
+    orig = termios.tcgetattr(fd)
+    C = ""
+    try:
+        tty.setcbreak(fd)  # or tty.setraw(fd) if you prefer raw mode's behavior.
+        c = "*"
+        while (
+            c
+            not in "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,./ "
+        ):
+            c = sys.stdin.read(1)
+            C += c
+    finally:
+        termios.tcsetattr(fd, termios.TCSAFLUSH, orig)
+    return C
+
+
+def prompt_getkey(prompt: str = ""):
+    p = partial(print, end="", flush=True)
+    p(prompt)
+    c = _getkey()
+    p("\r\x1b[K")
+    return c
+
+
+def _save(data: np.ndarray, file_name: str):
+    im = Image.fromarray(data.astype(np.uint8))
+    im.save(file_name)
+
+
+def save_result(data_set: List[np.ndarray], label_set: List[int], conf):
+    os.makedirs(conf.save_dir, exist_ok=True)
+    dirs = os.listdir(conf.save_dir)
+    start = len(dirs) - 1 if len(dirs) != 0 else len(dirs)
+    with open(os.path.join(conf.save_dir, "label.csv"), "+a") as f:
+        for i in range(len(data_set)):
+            name = str(start + i)
+            _save(data_set[i], os.path.join(conf.save_dir, name + ".png"))
+            f.write(f"{name},{label_set[i][0]},{label_set[i][1]}\n")

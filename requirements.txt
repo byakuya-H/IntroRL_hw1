@@ -6,3 +6,4 @@ matplotlib
 numpy
 Pillow
 pyparsing
+scikit-learn==1.0.2

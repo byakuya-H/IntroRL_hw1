@@ -1,2 +1,6 @@
 __pycache__
 __pycache__/**
+imgs
+imgs/**
+played_data
+played_data/**

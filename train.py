@@ -14,13 +14,22 @@ _c = table()
 def play_game(env: Env, conf: table):
     logging.info("start to play the game")
     obs = env.reset()
-    player = Expert(DummyAgent(env), env, conf.draw_method)
-    react = player.label
-    while True:
-        action = react(obs)
+    player = Expert(DummyAgent(env), env, _c.plt, conf.draw_method)
+    react, mean = player.label, player.tell_meaning4act
+    data, labels = [], []
+    # while True:
+    for i in range(0xFFFFFFFFFF):
+        action = react(obs, "use keyboard to control the agent:")
+        data.append(obs)
+        labels.append((action, mean(action)))
         obs_next, reward, done, _ = env.step(action)
         obs = obs_next
         obs = env.reset() if done else obs
+        if i % conf.play_save_interval == 0 and conf.save_img:
+            save_result(data, labels, conf)
+            data, labels = [], []
+            if i % conf.play_save_interval == 0:
+                obs = env.reset()
     del player
 
 
@@ -39,19 +48,30 @@ def label_data(expert: Expert, data: List[np.ndarray], conf: table):
 def train_once(epoch, env: Env, agent: Agent, conf):
     logging.info(f"start to train on epoch: {epoch}")
     obs = env.reset()
-    data = []
+    data, labels = [], []
+    expert = Expert(agent, env, _c.plt, conf.draw_method)
     for _ in range(conf.T):
         action = agent.select_action(obs, epsilon=conf.epsilon)
+        assert isinstance(action, int)
         obs_next, reward, done, _ = env.step(action)
+        if conf.T == 0xFFFFFFFF:
+            label = expert.label(obs)
+            if label == -2:
+                expert_halt_game = True
+                break
+            elif not label == -1:
+                data.append(obs)
+                labels.append((label, expert.tell_meaning4act(label)))
         obs = obs_next
-        data.append(obs)
         # if the episode has terminated, we need to reset the environment.
         obs = env.reset() if done else obs
-    expert = Expert(agent, env, conf.draw_method)
-    labels = label_data(expert, data, conf)
+    labels = label_data(expert, data, conf) if conf.T != 0xFFFFFFFF else labels
     if conf.save_img:
         save_result(data, labels, conf)
-    agent.update(data, labels)
+    logging.info("start to update the agent")
+    logging.debug(data, labels)
+    if len(labels) != 0:
+        agent.update(data, labels)
     logging.debug(f"epoch: {epoch} finished")
     return data, labels, len(labels)
 

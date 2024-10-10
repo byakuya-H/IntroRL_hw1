@@ -1,5 +1,5 @@
-from typing import List, Tuple, Union
-import sys, io
+from typing import Any, List, Tuple, Union
+import sys, io, logging
 from abc import abstractmethod
 from copy import deepcopy
 from base64 import standard_b64encode
@@ -9,8 +9,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import svm
 from sklearn.linear_model import SGDClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
-from utils import table, prompt_getkey, _Drawer_plt, _Drawer_kitty
+from utils import table, prompt_getkey, _Drawer_plt, _Drawer_kitty, load_data
 
 
 # the wrap is mainly for speed up the game
@@ -33,7 +35,7 @@ class Env:
             self.bare_env.reset(),
             dict(lives=0, episode_frame_number=0, frame_number=0),
         )
-        self.act2meaning, self.act_dec = (
+        self.act2meaning, self.act_dec, self.act_enc = (
             {
                 0: "NOOP",
                 1: "FIRE",
@@ -45,6 +47,7 @@ class Env:
                 12: "LEFTFIRE",
             },
             [0, 1, 2, 3, 4, 5, 11, 12],
+            [0, 1, 2, 3, 4, 5, 0, 0, 0, 0, 0, 6, 7],
         )
 
     def __getattr__(self, name: str):
@@ -93,30 +96,42 @@ class Agent:
         )
         num_cls = len(env.act_dec)
         self.initialize_sample, self.num_cls = (
-            ([env.dummy_obs.flatten() for _ in range(num_cls)], list(range(num_cls))),
+            ([env.dummy_obs for _ in range(num_cls)], list(range(num_cls))),
             num_cls,
         )
 
     @abstractmethod
-    def _select_action(self, obs: Union[np.ndarray, list]) -> Union[int, List[int]]:
+    def _select_action(
+        self, obs: Union[np.ndarray, list]
+    ) -> Union[int, List[int], np.ndarray]:
         return 0
 
     @abstractmethod
-    def update(self, data: List[np.ndarray], labels: List[Tuple[Union[int, str]]]):
+    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
         pass
 
+    def _act_dec(self, act) -> Union[List[int], int]:
+        if isinstance(act, np.ndarray):
+            return [self.env.act_dec[a] for a in act]
+        return self.env.act_dec[act]
+
+    def _act_enc(self, act) -> Union[List[int], int]:
+        if isinstance(act, list) or isinstance(act, np.ndarray):
+            return [self.env.act_enc[a] for a in act]
+        return self.env.act_enc[act]
+
     def select_action(
-        self, obs, epsilon: Union[float, None] = None
+        self, obs: Union[np.ndarray, list], epsilon: Union[float, None] = None
     ) -> Union[int, List[int]]:
         if epsilon is None:
             # choose an action according to our model
-            return self._select_action(obs)
+            return self._act_dec(self._select_action(obs))
         if np.random.rand() < epsilon:
             # we choose a random action
             return self.env.action_space.sample()
         else:
             # we choose a special action according to our model
-            return self._select_action(obs)
+            return self._act_dec(self._select_action(obs))
 
 
 # here is an example of creating your own Agent
@@ -134,48 +149,157 @@ class DummyAgent(Agent):
 
 
 class SvmAgent(Agent):
-    def __init__(self, env: Env):
+    def __init__(self, env: Env, init_dir: str = ""):
         super(SvmAgent, self).__init__(env)
         self.model, self.X, self.Y = svm.SVC(), [], []
         # initialize model
-        self.model.fit(*self.initialize_sample)
+        if init_dir != "":
+            X, Y = load_data(init_dir)
+            X, Y = [x.flatten() for x in X], self._act_enc(Y)
+        else:
+            X, Y = (
+                [d.flatten() for d in self.initialize_sample[0]],
+                self.initialize_sample[1],
+            )
+        logging.info("start to initialize the model")
+        self.model.fit(X, Y)
+        logging.info("initialization finished")
 
-    def _select_action(self, obs: Union[np.ndarray, list]) -> Union[int, List[int]]:
+    def _select_action(
+        self, obs: Union[np.ndarray, list]
+    ) -> Union[int, List[int], np.ndarray]:
         if isinstance(obs, np.ndarray):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[Union[int, str]]]):
-        data, labels = [d.flatten() for d in data], [la[0] for la in labels]
-        self.X += data
-        self.Y += labels
-        print(self.X, self.Y)
+    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
+        _data, _labels = (
+            [d.flatten() for d in data],
+            [self._act_enc(la[0]) for la in labels],
+        )
+        self.X += _data
+        self.Y += _labels
         self.model.fit(self.X, self.Y)
 
 
 class SgdAgent(Agent):
-    def __init__(self, env: Env):
+    def __init__(self, env: Env, init_dir: str = ""):
         super(SgdAgent, self).__init__(env)
-        self.model, self.X, self.Y = SGDClassifier(loss="hinge", penalty="l2"), [], []
+        self.model, self.X, self.Y = (
+            SGDClassifier(loss="hinge", penalty="l2", max_iter=999),
+            [],
+            [],
+        )
         # initialize model
-        self.model.fit(*self.initialize_sample)
+        if init_dir != "":
+            X, Y = load_data(init_dir)
+            X, Y = [x.flatten() for x in X], self._act_enc(Y)
+        else:
+            X, Y = (
+                [d.flatten() for d in self.initialize_sample[0]],
+                self.initialize_sample[1],
+            )
+        logging.info("start to initialize the model")
+        self.model.fit(X, Y)
+        logging.info("initialization finished")
 
-    def _select_action(self, obs: Union[np.ndarray, list]) -> Union[int, List[int]]:
+    def _select_action(
+        self, obs: Union[np.ndarray, list]
+    ) -> Union[int, List[int], np.ndarray]:
         if isinstance(obs, np.ndarray):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[Union[int, str]]]):
-        data, labels = [d.flatten() for d in data], [la[0] for la in labels]
-        self.model.partial_fit(data, labels)
+    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
+        _data, _labels = (
+            [d.flatten() for d in data],
+            [self._act_enc(la[0]) for la in labels],
+        )
+        self.model.partial_fit(_data, _labels)
+
+
+class DtAgent(Agent):
+    def __init__(self, env: Env, init_dir: str = ""):
+        super(DtAgent, self).__init__(env)
+        self.model, self.X, self.Y = (
+            DecisionTreeClassifier(),
+            [],
+            [],
+        )
+        # initialize model
+        if init_dir != "":
+            X, Y = load_data(init_dir)
+            X, Y = [x.flatten() for x in X], self._act_enc(Y)
+        else:
+            X, Y = (
+                [d.flatten() for d in self.initialize_sample[0]],
+                self.initialize_sample[1],
+            )
+        logging.info("start to initialize the model")
+        self.model.fit(X, Y)
+        logging.info("initialization finished")
+
+    def _select_action(
+        self, obs: Union[np.ndarray, list]
+    ) -> Union[int, List[int], np.ndarray]:
+        if isinstance(obs, np.ndarray):
+            return self.model.predict([obs.flatten()])[0]
+        return self.model.predict([ob.flatten() for ob in obs])
+
+    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
+        _data, _labels = (
+            [d.flatten() for d in data],
+            [self._act_enc(la[0]) for la in labels],
+        )
+        self.X += _data
+        self.Y += _labels
+        self.model.fit(self.X, self.Y)
+
+
+class RfAgent(Agent):
+    def __init__(self, env: Env, init_dir: str = ""):
+        super(RfAgent, self).__init__(env)
+        self.model, self.X, self.Y = (
+            RandomForestClassifier(),
+            [],
+            [],
+        )
+        # initialize model
+        if init_dir != "":
+            X, Y = load_data(init_dir)
+            X, Y = [x.flatten() for x in X], self._act_enc(Y)
+        else:
+            X, Y = (
+                [d.flatten() for d in self.initialize_sample[0]],
+                self.initialize_sample[1],
+            )
+        logging.info("start to initialize the model")
+        self.model.fit(X, Y)
+        logging.info("initialization finished")
+
+    def _select_action(
+        self, obs: Union[np.ndarray, list]
+    ) -> Union[int, List[int], np.ndarray]:
+        if isinstance(obs, np.ndarray):
+            return self.model.predict([obs.flatten()])[0]
+        return self.model.predict([ob.flatten() for ob in obs])
+
+    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
+        _data, _labels = (
+            [d.flatten() for d in data],
+            [self._act_enc(la[0]) for la in labels],
+        )
+        self.X += _data
+        self.Y += _labels
+        self.model.fit(self.X, self.Y)
 
 
 class Expert:
-    def __init__(self, agent: Agent, env: Env, draw_method: str = "plt"):
+    def __init__(self, agent: Agent, env: Env, plt, draw_method: str = "plt"):
         if draw_method == "kitty":
-            self._drawer = _Drawer_kitty()
+            self._drawer = _Drawer_kitty(plt)
         elif draw_method == "plt":
-            self._drawer = _Drawer_plt()
+            self._drawer = _Drawer_plt(plt)
         self.agent, self.env = agent, env
         self.key2act = {
             "/": 0,
@@ -186,14 +310,16 @@ class Expert:
             ",": 12,
             ".": 11,
             " ": 1,
+            "m": -1,
+            "n": -2,
         }
 
     def draw(self, obs: np.ndarray):
         self._drawer.draw(obs)
 
-    def label(self, obs: np.ndarray):
+    def label(self, obs: np.ndarray, prompt="please label the data:"):
         self.draw(obs)
-        label = prompt_getkey("please label the data:")
+        label = prompt_getkey(prompt)
         while label not in self.key2act.keys():
             label = prompt_getkey("please re-label the data:")
         return self.key2act[label]

@@ -1,6 +1,6 @@
-from typing import Any, List
+from typing import Any, List, Tuple
 from collections import OrderedDict
-import sys, os, io, termios, tty
+import sys, os, io, termios, tty, time, logging
 from base64 import standard_b64encode
 from functools import partial
 
@@ -56,10 +56,13 @@ class table(OrderedDict):
 class _Drawer_kitty:
     clear_screen = b"\x1b_Ga=d\x1b\\"
 
+    def __init__(self, plt):
+        self.plt = plt
+
     def draw(self, obs: np.ndarray):
         self._w(self.clear_screen)
         buf = io.BytesIO()
-        plt.imsave(buf, obs, format="png")
+        self.plt.imsave(buf, obs, format="png")
         data = standard_b64encode(buf.getvalue())
         im = b""
         while data:
@@ -80,17 +83,22 @@ class _Drawer_kitty:
 
 
 class _Drawer_plt:
-    def __init__(self):
-        plt.ion()
-        plt.show(block=False)
+    def __init__(self, plt):
+        self.plt = plt
+        self.plt.ion()
+        self.plt.show(block=False)
 
     def draw(self, obs: np.ndarray):
-        plt.imshow(obs)
-        plt.draw()
+        with self.plt.ion():
+            self.plt.imshow(obs)
+            self.plt.draw()
+            self.plt.pause(0.3)
 
     def __del__(self):
-        plt.clf()
-        plt.cla()
+        self.plt.clf()
+        self.plt.cla()
+        self.plt.ioff()
+
 
 def _getkey():
     """
@@ -135,3 +143,23 @@ def save_result(data_set: List[np.ndarray], label_set: List[int], conf):
             name = str(start + i)
             _save(data_set[i], os.path.join(conf.save_dir, name + ".png"))
             f.write(f"{name},{label_set[i][0]},{label_set[i][1]}\n")
+
+
+def load_data(dir_path: str) -> Tuple[List[np.ndarray], List[int]]:
+    _f = lambda f: os.path.join(dir_path, f)
+    if not os.path.isdir(dir_path):
+        logging.error(f"dir path: {dir_path} not exitst")
+        return [], []
+    elif not os.path.exists(_f("label.csv")):
+        logging.error(f"file {_f('label.csv')} not exitst")
+        return [], []
+    data, labels = [], []
+    with open(_f("label.csv"), "r") as f:
+        for line in f.readlines():
+            im_name, label = line.strip().split(",")[:2]
+            im_name = _f(im_name) + ".png"
+            if not os.path.exists(im_name):
+                continue
+            im = np.array(Image.open(im_name)).astype(np.uint8)
+            data.append(im), labels.append(int(label))
+    return data, labels

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+s=$(($(fd . ./played_data | wc -l) - 1))
+cat ./imgs/label.csv |
+	tr ',' ' ' |
+	awk -e \
+		'{print "\
+mv ./imgs/"$1".png ./played_data/"$1+'$s'".png; \
+echo "$1+'$s'","$2","$3"\0";}' |
+	sh - >>./played_data/label.csv
+rm -rf ./imgs

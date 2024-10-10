@@ -87,12 +87,12 @@ def val(epoch, query_cnt, env, agent, conf):
     for _ in range(conf.test_T):
         action = agent.select_action(obs)
         # you can render to get visual results
-        # envs.render()
+        env.render()
         obs_next, reward, done, _ = env.step(action)
         total_reward += reward
         obs = obs_next
+        rewards.append(total_reward)
         if done:
-            rewards.append(total_reward)
             total_reward, obs = 0, env.reset()
 
     end = time.time()

@@ -96,7 +96,7 @@ class Agent:
         )
         num_cls = len(env.act_dec)
         self.initialize_sample, self.num_cls = (
-            ([env.dummy_obs for _ in range(num_cls)], list(range(num_cls))),
+            ([env.dummy_obs for _ in range(num_cls)], [0 for _ in range(num_cls)]),
             num_cls,
         )
 

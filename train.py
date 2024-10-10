@@ -79,16 +79,18 @@ def train_once(epoch, env: Env, agent: Agent, conf):
 def val(epoch, query_cnt, env, agent, conf):
     logging.info(f"start to val the agent on epoch {epoch}")
     start = _c.start
-    total_steps = (epoch + 1) * conf.T
-    obs = env.reset()
-    rewards = []
-    total_reward = 0
-    # evaluate your model by testing in the environment
-    for _ in range(conf.test_T):
+    total_steps, rewards, total_reward = (epoch + 1) * conf.T, [], 0
+    obs, displayer = env.reset(), Expert(agent, env, _c.plt, conf.draw_method)
+    draw = displayer.draw
+    if conf.val_draw:
+        draw(obs), time.sleep(0.0025)
+    for _ in range(conf.val_T):
         action = agent.select_action(obs)
         # you can render to get visual results
-        env.render()
+        # env.render() # broken
         obs_next, reward, done, _ = env.step(action)
+        if conf.val_draw:
+            draw(obs_next), time.sleep(0.0025)
         total_reward += reward
         obs = obs_next
         rewards.append(total_reward)

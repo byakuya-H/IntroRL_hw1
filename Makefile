@@ -1,5 +1,5 @@
 clean:
-	rm -rf __pycache__ performance.png
+	rm -rf __pycache__
 
 data:
 	./script/mv_data

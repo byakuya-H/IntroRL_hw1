@@ -67,8 +67,8 @@ def train_once(epoch, env: Env, agent: Agent, conf):
         # if the episode has terminated, we need to reset the environment.
         obs = env.reset() if done else obs
     labels = label_data(expert, data, conf) if conf.T != 0xFFFFFFFF else labels
-    if conf.save_img:
-        save_result(data, labels, conf)
+    # if conf.save_img:
+    #     save_result(data, labels, conf)
     logging.info("start to update the agent")
     logging.debug(data, labels)
     if len(labels) != 0:

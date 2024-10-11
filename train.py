@@ -3,9 +3,10 @@ from typing import List
 import logging
 
 import numpy as np
+import matplotlib.pyplot as plt
 from PIL import Image
 
-from utils import table, save_result
+from utils import table, save_result, plot
 from Dagger import Env, Agent, DummyAgent, Expert
 
 _c = table()

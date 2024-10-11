@@ -2,12 +2,10 @@
 import time
 import logging
 
-import matplotlib.pyplot as plt
-
 from arguments import get_args
-from utils import plot, table, prompt_getkey, save_result
+from utils import table
 from Dagger import Env, Agent, DummyAgent, SvmAgent, SgdAgent, RfAgent, DtAgent
-from train import _c, play_game, train_once, train, val, main
+from train import _c, main
 
 args = get_args()
 conf = table(

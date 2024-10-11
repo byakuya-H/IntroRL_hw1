@@ -67,8 +67,8 @@ def train_once(epoch, env: Env, agent: Agent, conf):
         # if the episode has terminated, we need to reset the environment.
         obs = env.reset() if done else obs
     labels = label_data(expert, data, conf) if conf.T != 0xFFFFFFFF else labels
-    # if conf.save_img:
-    #     save_result(data, labels, conf)
+    if conf.save_img:
+        save_result(data, labels, conf)
     logging.info("start to update the agent")
     logging.debug(data, labels)
     if len(labels) != 0:
@@ -84,14 +84,20 @@ def val(epoch, query_cnt, env, agent, conf):
     obs, displayer = env.reset(), Expert(agent, env, _c.plt, conf.draw_method)
     draw = displayer.draw
     if conf.val_draw:
-        draw(obs), time.sleep(0.0025)
+        if conf.draw_method == "kitty":
+            draw(obs), time.sleep(0.0025)
+        else:
+            draw(obs)
     for _ in range(conf.val_T):
         action = agent.select_action(obs)
         # you can render to get visual results
         # env.render() # broken
         obs_next, reward, done, _ = env.step(action)
         if conf.val_draw:
-            draw(obs_next), time.sleep(0.0025)
+            if conf.draw_method == "kitty":
+                draw(obs_next), time.sleep(0.0025)
+            else:
+                draw(obs_next)
         total_reward += reward
         obs = obs_next
         rewards.append(total_reward)

@@ -177,10 +177,12 @@ class SvmAgent(Agent):
         return self.model.predict([ob.flatten() for ob in obs])
 
     def update(self, data: List[np.ndarray], labels: List[int]):
-        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
-        self.X += _data
-        self.Y += _labels
-        self.model.fit(self.X, self.Y)
+        self.X += data
+        self.Y += labels
+        save_result(data, labels, table(save_dir="imgs"))
+        input("ready to update the agent, press any key to continue.")
+        self.X, self.Y = load_data("imgs")
+        self.model.fit([x.flatten() for x in self.X], self._act_enc(self.Y))
 
 
 class SgdAgent(Agent):
@@ -245,10 +247,12 @@ class DtAgent(Agent):
         return self.model.predict([ob.flatten() for ob in obs])
 
     def update(self, data: List[np.ndarray], labels: List[int]):
-        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
-        self.X += _data
-        self.Y += _labels
-        self.model.fit(self.X, self.Y)
+        self.X += data
+        self.Y += labels
+        save_result(data, labels, table(save_dir="imgs"))
+        input("ready to update the agent, press any key to continue.")
+        self.X, self.Y = load_data("imgs")
+        self.model.fit([x.flatten() for x in self.X], self._act_enc(self.Y))
 
 
 class RfAgent(Agent):
@@ -280,10 +284,12 @@ class RfAgent(Agent):
         return self.model.predict([ob.flatten() for ob in obs])
 
     def update(self, data: List[np.ndarray], labels: List[int]):
-        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
-        self.X += _data
-        self.Y += _labels
-        self.model.fit(self.X, self.Y)
+        self.X += data
+        self.Y += labels
+        save_result(data, labels, table(save_dir="imgs"))
+        input("ready to update the agent, press any key to continue.")
+        self.X, self.Y = load_data("imgs")
+        self.model.fit([x.flatten() for x in self.X], self._act_enc(self.Y))
 
 
 class Expert:

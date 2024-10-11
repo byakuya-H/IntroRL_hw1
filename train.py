@@ -130,3 +130,22 @@ def train(epochs, env, agent, conf):
             for k, v in zip(record.keys(), res + (query_cnt,)):
                 record[k].append(v)
     return data_set, label_set, record
+
+
+def main(conf):
+    _c.start, _c.plt = time.time(), plt
+    # agent, environment initial
+    env = Env(conf.env_name, conf.num_fpstep)
+
+    # You can play this game yourself for fun
+    if conf.play_game:
+        play_game(env, conf)
+        exit(0)
+
+    # agent = DummyAgent(env=env)
+    agent = conf.agent(env=env, init_dir=conf.agent_init_dir)
+
+    # start train your agent
+    # epochs = int(conf.num_steps // conf.T)
+    data_set, label_set, records = train(conf.epochs, env, agent, conf)
+    plot(records)

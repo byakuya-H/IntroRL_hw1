@@ -1,6 +1,6 @@
-__pycache__
-__pycache__/**
-imgs
-imgs/**
-played_data
-played_data/**
+code/__pycache__
+code/__pycache__/**
+code/imgs
+code/imgs/**
+code/played_data
+code/played_data/**

@@ -130,7 +130,7 @@ class Agent:
     def select_action(
         self, obs: Union[np.ndarray, list], epsilon: Union[float, None] = None
     ) -> Union[int, List[int]]:
-        if epsilon is None and np.random.rand() >= epsilon:
+        if epsilon is None or np.random.rand() >= epsilon:
             # choose an action according to our model
             return self._act_dec(self._select_action(obs))
         else:

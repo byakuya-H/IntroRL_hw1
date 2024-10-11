@@ -22,7 +22,7 @@ def play_game(env: Env, conf: table):
     for i in range(0xFFFFFFFFFF):
         action = react(obs, "use keyboard to control the agent:")
         data.append(obs)
-        labels.append((action, mean(action)))
+        labels.append(action)
         obs_next, reward, done, _ = env.step(action)
         obs = obs_next
         obs = env.reset() if done else obs
@@ -40,7 +40,7 @@ def label_data(expert: Expert, data: List[np.ndarray], conf: table):
     labels = []
     for obs in data:
         action = expert.label(obs)
-        labels.append((action, expert.tell_meaning4act(action)))
+        labels.append(action)
     del expert
     logging.info("labelling finished")
     return labels
@@ -62,7 +62,7 @@ def train_once(epoch, env: Env, agent: Agent, conf):
                 break
             elif not label == -1:
                 data.append(obs)
-                labels.append((label, expert.tell_meaning4act(label)))
+                labels.append(label)
         obs = obs_next
         # if the episode has terminated, we need to reset the environment.
         obs = env.reset() if done else obs

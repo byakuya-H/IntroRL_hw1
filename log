@@ -1,0 +1,824 @@
+INFO:root:time: 10/09/24[13:53:43], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 10, 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SvmAgent'>}
+INFO:root:start to play the game
+INFO:root:time: 10/09/24[13:55:46], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 10, 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SvmAgent'>}
+INFO:root:start to play the game
+INFO:root:time: 10/09/24[14:03:53], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 10, 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SvmAgent'>}
+INFO:root:start to play the game
+INFO:root:time: 10/09/24[14:04:58], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 10, 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SvmAgent'>}
+INFO:root:start to play the game
+INFO:root:time: 10/09/24[16:39:04], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 10, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SgdAgent'>, 'agent_init_dir': 'played_data'}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 03m 10s Updates 9, num timesteps 500, FPS 2 
+ query 500, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 16
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 18
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 06m 05s Updates 19, num timesteps 1000, FPS 2 
+ query 1000, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 20
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 21
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 22
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 23
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 24
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 25
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 26
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 27
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 28
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 29
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 29
+INFO:root:TIME 00h 09m 09s Updates 29, num timesteps 1500, FPS 2 
+ query 1500, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:time: 10/10/24[08:07:37], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SgdAgent'>, 'agent_init_dir': 'played_data'}
+INFO:root:start to play the game
+INFO:root:time: 10/10/24[08:13:21], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SgdAgent'>, 'agent_init_dir': 'played_data'}
+INFO:root:start to play the game
+INFO:root:time: 10/10/24[10:46:13], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.SgdAgent'>, 'agent_init_dir': 'played_data'}
+INFO:root:start to play the game
+INFO:root:time: 10/10/24[12:42:54], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 50, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.RfAgent'>, 'agent_init_dir': 'played_data'}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 05m 19s Updates 9, num timesteps 500, FPS 1 
+ query 500, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to label the data
+INFO:root:time: 10/10/24[12:50:43], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 100, 'num_steps': 100000, 'epochs': 20, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.RfAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 05m 03s Updates 9, num timesteps 1000, FPS 3 
+ query 1000, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 16
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 18
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 15m 56s Updates 19, num timesteps 2000, FPS 2 
+ query 2000, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:time: 10/10/24[13:09:38], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 100, 'num_steps': 100000, 'epochs': 20, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 05m 04s Updates 9, num timesteps 1000, FPS 3 
+ query 1000, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 16
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 18
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to label the data
+INFO:root:labelling finished
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 14m 45s Updates 19, num timesteps 2000, FPS 2 
+ query 2000, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:time: 10/10/24[14:19:14], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 50, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:time: 10/10/24[14:19:48], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 50, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to play the game
+INFO:root:time: 10/10/24[14:20:15], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 50, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'played_data', 'save_interval': 10, 'play_game': True, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to play the game
+INFO:root:time: 10/10/24[14:21:55], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 50, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 08m 31s Updates 9, num timesteps 42949672950, FPS 83899967 
+ query 694, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 16
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 18
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 22m 27s Updates 19, num timesteps 85899345900, FPS 63758983 
+ query 2619, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 20
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 21
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 22
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 23
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 24
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 25
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 26
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 27
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 28
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 29
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 29
+INFO:root:TIME 00h 39m 26s Updates 29, num timesteps 128849018850, FPS 54436610 
+ query 5698, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 30
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 31
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 32
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 33
+INFO:root:time: 10/10/24[15:46:01], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 40, 'val_T': 2000, 'epsilon': 0.05, 'log_interval': 10, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:time: 10/10/24[16:12:28], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 40, 'val_T': 2000, 'val_draw': True, 'epsilon': 0.05, 'log_interval': 5, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 4
+INFO:root:TIME 00h 04m 55s Updates 4, num timesteps 21474836475, FPS 72727019 
+ query 494, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 09m 16s Updates 9, num timesteps 42949672950, FPS 77188606 
+ query 844, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 12
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 14
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 14
+INFO:root:TIME 00h 19m 10s Updates 14, num timesteps 64424509425, FPS 55986706 
+ query 2043, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 15
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 16
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:time: 10/11/24[04:32:44], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'val_draw': True, 'epsilon': 0.05, 'log_interval': 2, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 1
+INFO:root:TIME 00h 00m 27s Updates 1, num timesteps 8589934590, FPS 309750148 
+ query 36, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 3
+INFO:root:TIME 00h 01m 42s Updates 3, num timesteps 17179869180, FPS 168396807 
+ query 92, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 5
+INFO:root:TIME 00h 02m 08s Updates 5, num timesteps 25769803770, FPS 200541154 
+ query 131, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 7
+INFO:root:TIME 00h 02m 41s Updates 7, num timesteps 34359738360, FPS 212590212 
+ query 181, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 03m 39s Updates 9, num timesteps 42949672950, FPS 195253013 
+ query 285, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 11
+INFO:root:TIME 00h 06m 21s Updates 11, num timesteps 51539607540, FPS 135026488 
+ query 624, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 12
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 13
+INFO:root:TIME 00h 08m 39s Updates 13, num timesteps 60129542130, FPS 115695054 
+ query 796, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 14
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 15
+INFO:root:TIME 00h 10m 31s Updates 15, num timesteps 68719476720, FPS 108824151 
+ query 1045, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 16
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 17
+INFO:root:TIME 00h 12m 44s Updates 17, num timesteps 77309411310, FPS 101091057 
+ query 1365, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 18
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 15m 36s Updates 19, num timesteps 85899345900, FPS 91747006 
+ query 1734, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 20
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 21
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 21
+INFO:root:TIME 00h 17m 18s Updates 21, num timesteps 94489280490, FPS 90969710 
+ query 1939, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 22
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 23
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 23
+INFO:root:TIME 00h 19m 47s Updates 23, num timesteps 103079215080, FPS 86779703 
+ query 2130, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 24
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 25
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 25
+INFO:root:TIME 00h 21m 24s Updates 25, num timesteps 111669149670, FPS 86905501 
+ query 2306, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 26
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 27
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 27
+INFO:root:TIME 00h 23m 17s Updates 27, num timesteps 120259084260, FPS 86051714 
+ query 2484, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 28
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 29
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 29
+INFO:root:TIME 00h 24m 54s Updates 29, num timesteps 128849018850, FPS 86203272 
+ query 2680, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:time: 10/11/24[08:16:17], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'val_draw': True, 'epsilon': 0.05, 'log_interval': 2, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 1
+INFO:root:TIME 00h 00m 38s Updates 1, num timesteps 8589934590, FPS 224351772 
+ query 47, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 3
+INFO:root:TIME 00h 02m 32s Updates 3, num timesteps 17179869180, FPS 112955371 
+ query 99, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 5
+INFO:root:TIME 00h 04m 43s Updates 5, num timesteps 25769803770, FPS 90929808 
+ query 324, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 7
+INFO:root:TIME 00h 09m 49s Updates 7, num timesteps 34359738360, FPS 58315633 
+ query 701, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 14m 31s Updates 9, num timesteps 42949672950, FPS 49281548 
+ query 871, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 11
+INFO:root:TIME 00h 17m 23s Updates 11, num timesteps 51539607540, FPS 49376855 
+ query 1141, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 12
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 13
+INFO:root:TIME 00h 20m 31s Updates 13, num timesteps 60129542130, FPS 48844352 
+ query 1462, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 14
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 15
+INFO:root:TIME 00h 23m 19s Updates 15, num timesteps 68719476720, FPS 49110985 
+ query 1650, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 16
+INFO:root:time: 10/11/24[08:40:03], config: {'env_name': 'MontezumaRevengeNoFrameskip-v0', 'num_fpstep': 8, 'T': 4294967295, 'num_steps': 100000, 'epochs': 30, 'val_T': 2000, 'val_draw': True, 'epsilon': 0.05, 'log_interval': 2, 'save_img': True, 'save_dir': 'imgs', 'save_interval': 10, 'play_game': False, 'play_save_interval': 100, 'player_dir': 'played_data', 'draw_method': 'kitty', 'log_file': 'log', 'agent': <class 'Dagger.DtAgent'>, 'agent_init_dir': ''}
+INFO:root:start to initialize the model
+INFO:root:initialization finished
+INFO:root:start to train on epoch: 0
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 1
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 1
+INFO:root:TIME 00h 00m 21s Updates 1, num timesteps 8589934590, FPS 405575846 
+ query 26, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 2
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 3
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 3
+INFO:root:TIME 00h 01m 40s Updates 3, num timesteps 17179869180, FPS 170551592 
+ query 98, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 4
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 5
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 5
+INFO:root:TIME 00h 03m 37s Updates 5, num timesteps 25769803770, FPS 118476092 
+ query 481, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 6
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 7
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 7
+INFO:root:TIME 00h 04m 55s Updates 7, num timesteps 34359738360, FPS 116441297 
+ query 646, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 8
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 9
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 9
+INFO:root:TIME 00h 07m 30s Updates 9, num timesteps 42949672950, FPS 95262111 
+ query 958, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 10
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 11
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 11
+INFO:root:TIME 00h 09m 03s Updates 11, num timesteps 51539607540, FPS 94816191 
+ query 1130, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 12
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 13
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 13
+INFO:root:TIME 00h 10m 40s Updates 13, num timesteps 60129542130, FPS 93913141 
+ query 1282, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 14
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 15
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 15
+INFO:root:TIME 00h 13m 28s Updates 15, num timesteps 68719476720, FPS 85043154 
+ query 1692, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 16
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 17
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 17
+INFO:root:TIME 00h 16m 57s Updates 17, num timesteps 77309411310, FPS 75975464 
+ query 1973, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 18
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 19
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 19
+INFO:root:TIME 00h 18m 32s Updates 19, num timesteps 85899345900, FPS 77228266 
+ query 2094, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 20
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 21
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 21
+INFO:root:TIME 00h 22m 12s Updates 21, num timesteps 94489280490, FPS 70931924 
+ query 2292, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 22
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 23
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 23
+INFO:root:TIME 00h 24m 25s Updates 23, num timesteps 103079215080, FPS 70338108 
+ query 2499, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 24
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 25
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 25
+INFO:root:TIME 00h 26m 54s Updates 25, num timesteps 111669149670, FPS 69165622 
+ query 2686, avrage/min/max reward 0.0/0.0/0.0
+INFO:root:start to train on epoch: 26
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 27
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 27
+INFO:root:TIME 00h 34m 37s Updates 27, num timesteps 120259084260, FPS 57897519 
+ query 2985, avrage/min/max reward 56.4/0.0/100.0
+INFO:root:start to train on epoch: 28
+INFO:root:start to update the agent
+INFO:root:start to train on epoch: 29
+INFO:root:start to update the agent
+INFO:root:start to val the agent on epoch 29
+INFO:root:TIME 00h 36m 33s Updates 29, num timesteps 128849018850, FPS 58748049 
+ query 3174, avrage/min/max reward 0.0/0.0/0.0

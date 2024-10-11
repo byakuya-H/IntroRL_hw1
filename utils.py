@@ -142,7 +142,7 @@ def save_result(data_set: List[np.ndarray], label_set: List[int], conf):
         for i in range(len(data_set)):
             name = str(start + i)
             _save(data_set[i], os.path.join(conf.save_dir, name + ".png"))
-            f.write(f"{name},{label_set[i][0]},{label_set[i][1]}\n")
+            f.write(f"{name},{label_set[i]}\n")
 
 
 def load_data(dir_path: str) -> Tuple[List[np.ndarray], List[int]]:

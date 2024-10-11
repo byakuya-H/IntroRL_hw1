@@ -12,7 +12,14 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
-from utils import table, prompt_getkey, _Drawer_plt, _Drawer_kitty, load_data
+from utils import (
+    save_result,
+    table,
+    prompt_getkey,
+    _Drawer_plt,
+    _Drawer_kitty,
+    load_data,
+)
 
 
 # the wrap is mainly for speed up the game
@@ -107,7 +114,7 @@ class Agent:
         return 0
 
     @abstractmethod
-    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
+    def update(self, data: List[np.ndarray], labels: List[int]):
         pass
 
     def _act_dec(self, act) -> Union[List[int], int]:
@@ -123,15 +130,12 @@ class Agent:
     def select_action(
         self, obs: Union[np.ndarray, list], epsilon: Union[float, None] = None
     ) -> Union[int, List[int]]:
-        if epsilon is None:
+        if epsilon is None and np.random.rand() >= epsilon:
             # choose an action according to our model
             return self._act_dec(self._select_action(obs))
-        if np.random.rand() < epsilon:
+        else:
             # we choose a random action
             return self.env.action_space.sample()
-        else:
-            # we choose a special action according to our model
-            return self._act_dec(self._select_action(obs))
 
 
 # here is an example of creating your own Agent
@@ -172,11 +176,8 @@ class SvmAgent(Agent):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
-        _data, _labels = (
-            [d.flatten() for d in data],
-            [self._act_enc(la[0]) for la in labels],
-        )
+    def update(self, data: List[np.ndarray], labels: List[int]):
+        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
         self.X += _data
         self.Y += _labels
         self.model.fit(self.X, self.Y)
@@ -210,11 +211,8 @@ class SgdAgent(Agent):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
-        _data, _labels = (
-            [d.flatten() for d in data],
-            [self._act_enc(la[0]) for la in labels],
-        )
+    def update(self, data: List[np.ndarray], labels: List[int]):
+        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
         self.model.partial_fit(_data, _labels)
 
 
@@ -246,11 +244,8 @@ class DtAgent(Agent):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
-        _data, _labels = (
-            [d.flatten() for d in data],
-            [self._act_enc(la[0]) for la in labels],
-        )
+    def update(self, data: List[np.ndarray], labels: List[int]):
+        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
         self.X += _data
         self.Y += _labels
         self.model.fit(self.X, self.Y)
@@ -284,11 +279,8 @@ class RfAgent(Agent):
             return self.model.predict([obs.flatten()])[0]
         return self.model.predict([ob.flatten() for ob in obs])
 
-    def update(self, data: List[np.ndarray], labels: List[Tuple[int, str]]):
-        _data, _labels = (
-            [d.flatten() for d in data],
-            [self._act_enc(la[0]) for la in labels],
-        )
+    def update(self, data: List[np.ndarray], labels: List[int]):
+        _data, _labels = [d.flatten() for d in data], self._act_enc(labels)
         self.X += _data
         self.Y += _labels
         self.model.fit(self.X, self.Y)
@@ -317,7 +309,11 @@ class Expert:
     def draw(self, obs: np.ndarray):
         self._drawer.draw(obs)
 
-    def label(self, obs: np.ndarray, prompt="please label the data:"):
+    def label(
+        self,
+        obs: np.ndarray,
+        prompt="Arrow key to control the agent, space to fire, `,` and `.` to fire left and right, `/` to noop, `m` to reject the sample, `n` to end this epoch. Please label the data:",
+    ):
         self.draw(obs)
         label = prompt_getkey(prompt)
         while label not in self.key2act.keys():
